@@ -79,14 +79,24 @@ object TileRecords {
     }
 
     private fun addHistoryLog(log: TileLog){
+        if(log.toShortString().contains(Core.bundle.get("client.destroyed"))){
+            return
+        }
         if(history.size>7){
             history.removeAt(0)
         }
-        if(history.size>0&& history[history.size-1].startsWith(log.toShortString())){
-            var nya = history[history.size-1].substring(log.toShortString().length+2);
-            var neko = Integer.parseInt(nya)+1
-            history[history.size-1] = log.toShortString()+" x"+neko
-        }else {
+        //var i = 0;
+        var done = false;
+        if(history.size>0)
+        for (i in 0..(history.size-1)){
+            if(history[i].startsWith(log.toShortString())){
+                var nya = history[i].substring(log.toShortString().length+2);
+                var neko = Integer.parseInt(nya)+1
+                history[i] = log.toShortString()+" x"+neko
+                done=true;
+            }
+        }
+        if(!done) {
             history.add(log.toShortString() + " x1");
         }
     }
