@@ -23,7 +23,7 @@ public class Version{
     /** Custom client update url used for... updating */
     public static String updateUrl = "";
     /** Custom client version string used for various things */
-    public static String clientVersion = "v1.0.0, Jan. 1, 1970";
+    public static String clientVersion = "neko ichi, 22.04.2022";
 
     public static void init(){
         if(!enabled) return;

@@ -35,7 +35,7 @@ public class HistoryInfoFragment extends Table {
             if (record.size() < 1 ) return;
             builder.setLength(0);
             for (var item : record) {
-                item = item.replace("построил","[#41e89a]построил[]").replace("разобрал","[#f25c5c]разобрал[]");
+                item = item.replace(Core.bundle.get("client.built"),"[#41e89a]"+Core.bundle.get("client.built")+"[]").replace(Core.bundle.get("client.broke"),"[#f25c5c]"+Core.bundle.get("client.broke")+"[]");
                 builder.append(item).append("\n");
             }
             label.setText(builder.length() == 0 ? "" : builder.substring(0, builder.length() - 1));
