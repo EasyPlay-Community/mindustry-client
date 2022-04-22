@@ -104,10 +104,13 @@ public class HudFragment extends Fragment{
             t.table(ta -> {
                 //tile hud
                 ta.name = "minimap/position";
-                ta.add(new TileInfoFragment()).name("tilehud").top();
+                ta.add(new HistoryInfoFragment()).name("log").top();
                 //minimap
                 ta.add(new Minimap()).name("minimap").top();
-            });
+            }).right();
+            t.row();
+            t.add(new TileInfoFragment()).name("tilehud").right();
+
             t.row();
             //position
             t.label(() -> player.tileX() + ", " + player.tileY())

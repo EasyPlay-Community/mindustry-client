@@ -12,6 +12,7 @@ import mindustry.world.blocks.*
 
 object TileRecords {
     private var records: Array<Array<TileRecord>> = arrayOf(arrayOf())
+    var history: ArrayList<String> = arrayListOf()
 
     fun initialize() {
         Events.on(EventType.WorldLoadEvent::class.java) {
@@ -74,6 +75,14 @@ object TileRecords {
     private fun addLog(tile: Tile, log: TileLog) {
         val logs = this[tile] ?: return
         logs.add(log, tile)
+        addHistoryLog(log)
+    }
+
+    private fun addHistoryLog(log: TileLog){
+        if(history.size>7){
+            history.removeAt(0)
+        }
+        history.add(log.toString());
     }
 
     fun show(tile: Tile) {
