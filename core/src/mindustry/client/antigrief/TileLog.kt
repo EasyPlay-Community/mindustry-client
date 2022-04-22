@@ -8,6 +8,8 @@ import mindustry.*
 import mindustry.client.utils.*
 import mindustry.content.*
 import mindustry.core.*
+import mindustry.gen.Iconc
+import mindustry.ui.Fonts
 import mindustry.world.*
 import java.time.*
 import kotlin.math.*
@@ -168,7 +170,7 @@ class ConfigureTileLog(tile: Tile, cause: Interactor, val block: Block, var conf
     }
 
     override fun toString(): String {
-        return "${cause.name.stripColors()} ${Core.bundle.get("client.configured")} ${block.localizedName}"
+        return "${cause.name.stripColors()} ${Core.bundle.get("client.configured")} ${Fonts.stringIcons.get(block.name)}"
     }
 
     override fun add(sequence: TileLogSequence) {
@@ -178,7 +180,7 @@ class ConfigureTileLog(tile: Tile, cause: Interactor, val block: Block, var conf
         }
     }
 
-    override fun toShortString() = "${cause.shortName.stripColors()} ${Core.bundle.get("client.configured")}"
+    override fun toShortString() = "${cause.shortName.stripColors()} ${Core.bundle.get("client.configured")} ${Fonts.stringIcons.get(block.name)}"
 }
 
 open class TilePlacedLog(tile: Tile, cause: Interactor, val block: Block, val configuration: Any?) : TileLog(tile, cause) {
@@ -188,18 +190,18 @@ open class TilePlacedLog(tile: Tile, cause: Interactor, val block: Block, val co
     }
 
     override fun toString(): String {
-        return "${cause.name.stripColors()} ${Core.bundle.get("client.built")} ${block.localizedName}"
+        return "${cause.name.stripColors()} ${Core.bundle.get("client.built")} ${Fonts.stringIcons.get(block.name)}"
     }
 
-    override fun toShortString() = "${cause.shortName.stripColors()} ${Core.bundle.get("client.built")} ${block.localizedName}"
+    override fun toShortString() = "${cause.shortName.stripColors()} ${Core.bundle.get("client.built")} ${Fonts.stringIcons.get(block.name)}"
 }
 
 class BlockPayloadDropLog(tile: Tile, cause: Interactor, block: Block, configuration: Any?) : TilePlacedLog(tile, cause, block, configuration) {
     override fun toString(): String {
-        return "${cause.name.stripColors()} ${Core.bundle.get("client.putdown")} ${block.localizedName}"
+        return "${cause.name.stripColors()} ${Core.bundle.get("client.putdown")} ${Fonts.stringIcons.get(block.name)}"
     }
 
-    override fun toShortString() = "${cause.shortName.stripColors()} ${Core.bundle.get("client.putdown")} ${block.localizedName}"
+    override fun toShortString() = "${cause.shortName.stripColors()} ${Core.bundle.get("client.putdown")} ${Fonts.stringIcons.get(block.name)}"
 }
 
 open class TileBreakLog(tile: Tile, cause: Interactor, val block: Block) : TileLog(tile, cause) {
@@ -209,24 +211,23 @@ open class TileBreakLog(tile: Tile, cause: Interactor, val block: Block) : TileL
     }
 
     override fun toString(): String {
-        return "${cause.name.stripColors()} ${Core.bundle.get("client.broke")} ${block.localizedName}"
+        return "${cause.name.stripColors()} ${Core.bundle.get("client.broke")} ${Fonts.stringIcons.get(block.name)}"
     }
 
-    override fun toShortString() = "${cause.shortName.stripColors()} ${Core.bundle.get("client.broke")} ${block.localizedName}"
+    override fun toShortString() = "${cause.shortName.stripColors()} ${Core.bundle.get("client.broke")} ${Fonts.stringIcons.get(block.name)}"
 }
 
 class BlockPayloadPickupLog(tile: Tile, cause: Interactor, block: Block) : TileBreakLog(tile, cause, block) {
     override fun toString(): String {
-        return "${cause.name.stripColors()} ${Core.bundle.get("client.pickedup")} ${block.localizedName}"
+        return "${cause.name.stripColors()} ${Core.bundle.get("client.pickedup")} ${Fonts.stringIcons.get(block.name)}"
     }
-
-    override fun toShortString() = "${cause.shortName.stripColors()} ${Core.bundle.get("client.pickedup")} ${block.localizedName}"
+    override fun toShortString() = "${cause.shortName.stripColors()} ${Core.bundle.get("client.pickedup")} ${Fonts.stringIcons.get(block.name)}"
 }
 
 class TileDestroyedLog(tile: Tile, block: Block) : TileBreakLog(tile, NoInteractor(), block) {
     override fun toString(): String {
-        return "${block.localizedName} ${Core.bundle.get("client.destroyed")}"
+        return "${Fonts.stringIcons.get(block.name)} ${Core.bundle.get("client.destroyed")}"
     }
 
-    override fun toShortString() = "${block.localizedName} ${Core.bundle.get("client.destroyed")}"
+    override fun toShortString() = "${Fonts.stringIcons.get(block.name)} ${Core.bundle.get("client.destroyed")}"
 }

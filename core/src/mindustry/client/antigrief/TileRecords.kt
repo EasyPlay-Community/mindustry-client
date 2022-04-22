@@ -82,7 +82,13 @@ object TileRecords {
         if(history.size>7){
             history.removeAt(0)
         }
-        history.add(log.toString());
+        if(history.size>0&& history[history.size-1].startsWith(log.toShortString())){
+            var nya = history[history.size-1].substring(log.toShortString().length+2);
+            var neko = Integer.parseInt(nya)+1
+            history[history.size-1] = log.toShortString()+" x"+neko
+        }else {
+            history.add(log.toShortString() + " x1");
+        }
     }
 
     fun show(tile: Tile) {
