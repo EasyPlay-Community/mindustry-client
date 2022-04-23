@@ -226,7 +226,8 @@ public class HudFragment extends Fragment{
                 // Power bar display
                 s.row();
                 s.add(PowerInfo.getBars()).growX().colspan(s.getColumns());
-
+                s.row();
+                s.add(ConnectButtons.get()).growX().colspan(s.getColumns());
                 // Boss bar display
                 s.row();
                 s.table(Tex.wavepane, t -> t.add(new Bar("boss.health", Pal.health, () -> state.boss() == null ? 0f : state.boss().healthf()).blink(Color.white)).grow()).grow().colspan(s.getColumns()).height(65).visible(() -> state.boss() != null).name("boss");
