@@ -23,7 +23,7 @@ public class ConnectButtons {
         buttons.button(Icon.modeAttack,()-> {Vars.netClient.disconnectQuietly(); Vars.ui.join.connect("s.easyplay.su",6587);}).height(64).width(60f);
         buttons.button(Iconc.itemSand+"#1",()-> {Vars.netClient.disconnectQuietly(); Vars.ui.join.connect("s.easyplay.su",6686);}).height(64).width(60f);
         buttons.button(Iconc.itemSand+"#2",()-> {Vars.netClient.disconnectQuietly(); Vars.ui.join.connect("s.easyplay.su",6687);}).height(64).width(60f);
-        buttons.button(Iconc.defense+"",()-> {Vars.netClient.disconnectQuietly(); Vars.ui.join.connect("s.easyplay.su",6676);}).height(64).width(60f);
+        buttons.button(Iconc.commandRally+"",()-> {Vars.netClient.disconnectQuietly(); Vars.ui.join.connect("s.easyplay.su",6676);}).height(64).width(60f);
 
         return buttons;
     }

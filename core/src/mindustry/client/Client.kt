@@ -4,6 +4,7 @@ import arc.*
 import arc.graphics.*
 import arc.math.*
 import arc.util.*
+import mindustry.Vars
 import mindustry.Vars.*
 import mindustry.client.ClientVars.*
 import mindustry.client.Spectate.spectate
@@ -110,6 +111,25 @@ object Client {
                 Flagged(Unflagged): ${counts[3]}(${counts[4]})
                 Players(Formation): ${counts[5]}(${counts[6]})
                 Logic Controlled: ${counts[7]}""".trimIndent())
+        }
+
+        register("countblocks <block...>", Core.bundle.get("client.command.count.description")) { args, player ->
+            val type = content.blocks().min { u -> BiasedLevenshtein.biasedLevenshteinInsensitive(args[0], u.localizedName) }
+            var counter = 0;
+            var bsize = type.size*type.size
+            var x = Vars.world.width()-1;
+            var y = Vars.world.height()-1;
+            for(i in 0..x){
+                for(j in 0..y){
+                    if(Vars.world.tile(i,j).block()==type){
+                        counter++;
+                    }
+                }
+            }
+            player.sendMessage("""
+                [accent]${type.localizedName}:
+                Total in your team: ${counter/bsize}
+                """.trimIndent())
         }
 
         register("go [x] [y]", Core.bundle.get("client.command.go.description")) { args, player ->
