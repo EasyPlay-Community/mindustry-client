@@ -39,7 +39,7 @@ allprojects{
         if(!project.hasProperty("updateUrl")) updateUrl = ''
         if(!project.hasProperty("versionModifier")) versionModifier = 'release'
         if(!project.hasProperty("buildversion")) buildversion = '126.2'
-        if(!project.hasProperty("clientVersion")) clientVersion = 'v1.0.0, Jan. 1, 1970'
+        if(!project.hasProperty("clientVersion")) clientVersion = 'v neko ichi ni, 1000-skat'
         if(!project.hasProperty("versionType")) versionType = 'official'
         appName = 'Mindustry'
         steamworksVersion = '891ed912791e01fe9ee6237a6497e5212b85c256'

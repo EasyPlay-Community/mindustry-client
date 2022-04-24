@@ -53,7 +53,7 @@ public class DesktopLauncher extends ClientLauncher{
 
             Version.init();
             config = new SdlConfig() {{
-                title = Strings.format("Mindustry (v@) | Foo's Client (@)", Version.buildString(), Version.clientVersion.equals("v0.0.0") ? "Dev" : Version.clientVersion);
+                title = Strings.format("Mindustry (v@) | Foo's Nekonya Client (@)", Version.buildString(), Version.clientVersion.equals("v0.0.0") ? "Dev" : Version.clientVersion);
                 maximized = true;
                 width = 900;
                 height = 700;
