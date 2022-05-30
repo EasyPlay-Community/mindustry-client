@@ -31,7 +31,7 @@ public class HistoryInfoFragment extends Table {
         var builder = new StringBuilder();
         update(() -> {
 
-            var record = TileRecords.INSTANCE.getHistory();
+            var record = TileRecords.INSTANCE.getHistoryResult();
             if (record.size() < 1 ) return;
             builder.setLength(0);
             for (var item : record) {

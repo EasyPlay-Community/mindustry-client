@@ -13,6 +13,8 @@ import mindustry.world.blocks.*
 object TileRecords {
     private var records: Array<Array<TileRecord>> = arrayOf(arrayOf())
     var history: ArrayList<String> = arrayListOf()
+    var historyResult: ArrayList<String> = arrayListOf()
+
 
     fun initialize() {
         Events.on(EventType.WorldLoadEvent::class.java) {
@@ -84,6 +86,7 @@ object TileRecords {
         }
         if(history.size>7){
             history.removeAt(0)
+            historyResult.removeAt(0)
         }
         //var i = 0;
         var done = false;
@@ -93,11 +96,19 @@ object TileRecords {
                 var nya = history[i].substring(log.toShortString().length+2);
                 var neko = Integer.parseInt(nya)+1
                 history[i] = log.toShortString()+" x"+neko
+                var delimiter = 1
+                when(log){
+                    is ConfigureTileLog -> delimiter = log.block.size
+                    is TilePlacedLog -> delimiter = log.block.size
+                    is TileBreakLog -> delimiter = log.block.size
+                }
+                historyResult[i] = log.toShortString()+" x"+(Math.ceil(neko*1.0/(delimiter*delimiter)).toInt())
                 done=true;
             }
         }
         if(!done) {
             history.add(log.toShortString() + " x1");
+            historyResult.add(log.toShortString() + " x1");
         }
     }
 

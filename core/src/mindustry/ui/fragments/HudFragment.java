@@ -105,6 +105,7 @@ public class HudFragment extends Fragment{
                 //tile hud
                 ta.name = "minimap/position";
                 ta.add(new HistoryInfoFragment()).name("log").top();
+                ta.add(new ProcessorPicture()).name("proc-pic").top();
                 //minimap
                 ta.add(new Minimap()).name("minimap").top();
             }).right();

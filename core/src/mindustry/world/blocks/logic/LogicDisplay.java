@@ -7,6 +7,7 @@ import arc.graphics.gl.*;
 import arc.struct.*;
 import arc.util.*;
 import mindustry.annotations.Annotations.*;
+import mindustry.client.ui.ProcessorPicture;
 import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.ui.*;
@@ -100,6 +101,7 @@ public class LogicDisplay extends Block{
 
             Draw.draw(Draw.z(), () -> {
                 if(buffer != null){
+                    ProcessorPicture.PPRegion=buffer.getTexture();
                     Draw.rect(Draw.wrap(buffer.getTexture()), x, y, (buffer.getWidth() + 16) * Draw.scl, -(buffer.getHeight() + 16) * Draw.scl);
                 }
             });
